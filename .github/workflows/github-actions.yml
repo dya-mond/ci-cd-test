@@ -12,11 +12,12 @@ on:
     branches:
       - main
       - develop
+      - feature/*
   pull_request:
     branches:
       - main
       - develop
-      - feature*
+      - feature/*
     types: [opened, synchronize, reopened]
 
 permissions:
