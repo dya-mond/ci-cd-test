@@ -49,18 +49,18 @@ jobs:
         path: ~/.gradle/caches
         key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
         restore-keys: ${{ runner.os }}-gradle
-        
+      
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+    
+    - name: Test with Gradle
+      run: ./gradlew --info test
+      
+    - name: Build with Gradle
+      run: ./gradlew build -x test
+      
     - name: Build and analyze
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       run: ./gradlew build sonarqube --info
-      
-    - name: Grant execute permission for gradlew
-      run: chmod +x gradlew
-
-    - name: Build with Gradle
-      run: ./gradlew build -x test
-    
-    - name: Test with Gradle
-      run: ./gradlew --info test
