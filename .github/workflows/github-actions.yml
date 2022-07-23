@@ -17,6 +17,7 @@ on:
       - main
       - develop
       - feature*
+    types: [opened, synchronize, reopened]
 
 permissions:
   contents: read
