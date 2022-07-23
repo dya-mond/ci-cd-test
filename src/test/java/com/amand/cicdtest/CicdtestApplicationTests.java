@@ -9,7 +9,8 @@ class CicdtestApplicationTests {
 
 	@Test
 	void contextLoads() {
-		Assertions.assertThat(2).isEqualTo(2);
+		int actual = 2;
+		Assertions.assertThat(actual).isEqualTo(2);
 	}
 
 }
